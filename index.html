@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>1944: The Loop Master (V2 — 3D)</title>
-  <meta name="description" content="iPhone-optimized 3D remake of the classic arcade shooter — WebGPU powered, offline playable.">
+  <title>44-pwa — 1944 iPhone 3D</title>
+  <meta name="description" content="iPhone-optimized 3D shooter — pure WebGL, no modules, offline playable.">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#1a237e">
   <style>
@@ -58,24 +58,11 @@
     💻 PC: ← → | SPACE | P
   </div>
 
-  <!-- Three.js R160+ CDN (no build step) -->
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.160.0/examples/jsm/exports/index.js",
-        "@webgpu/glslang": "https://unpkg.com/@webgpu/glslang@0.0.12/dist/webgpu-glslang.js"
-      }
-    }
-  </script>
-
-  <script type="module">
-    import * as THREE from 'three';
-    import { GLTFLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
-    import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
-
+  <!-- Three.js UMD (iOS Safari 100% compatible) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
     // === SCENE SETUP ===
     const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('webgl2') || canvas.getContext('webgpu');
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
