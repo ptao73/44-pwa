@@ -63,12 +63,11 @@
   <script>
     // === SCENE SETUP ===
     const canvas = document.getElementById('gameCanvas');
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true }); // ✅ REMOVED: alpha: true
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
     const scene = new THREE.Scene();
-    // ✅ REMOVED: scene.background = ... (handled by CSS)
 
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 0, 50);
@@ -249,8 +248,10 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    // Start
-    animate();
+    // ✅ START AFTER DOM IS READY
+    window.addEventListener('DOMContentLoaded', () => {
+      animate();
+    });
   </script>
 </body>
 </html>
